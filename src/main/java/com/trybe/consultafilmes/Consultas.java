@@ -26,11 +26,11 @@ public class Consultas {
    */
   public Set<String> atoresQueInterpretaramSiProprios() {
     Set<String> todosAtores = filmes.stream()
-        .flatMap(filme -> filme.getAtores().stream())
+        .flatMap(filme -> filme.atores.stream())
         .collect(Collectors.toSet());
 
     return todosAtores.stream()
-        .filter(ator -> filmes.stream().anyMatch(filme -> filme.getPersonagens().contains(ator)))
+        .filter(ator -> filmes.stream().anyMatch(filme -> filme.personagens.contains(ator)))
         .collect(Collectors.toSet());
   }
 
