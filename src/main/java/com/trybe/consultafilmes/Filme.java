@@ -45,6 +45,34 @@ public class Filme {
         .collect(Collectors.toUnmodifiableSet());
   }
 
+  public String getTitulo() {
+    return titulo;
+  }
+
+  public int getAnoDeLancamento() {
+    return anoDeLancamento;
+  }
+
+  public Set<String> getCategorias() {
+    return categorias;
+  }
+
+  public Set<String> getDiretores() {
+    return diretores;
+  }
+
+  public Set<String> getAtores() {
+    return atores;
+  }
+
+  public Set<String> getPersonagens() {
+    return personagens;
+  }
+
+  public Map<String, Set<String>> getAtoresPorPersonagem() {
+    return atoresPorPersonagem;
+  }
+
   @Override
   public String toString() {
     return String.format("%s (%d)", titulo, anoDeLancamento);

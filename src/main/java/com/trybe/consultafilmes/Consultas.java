@@ -4,10 +4,9 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.emptyMap;
 import static java.util.Collections.emptySet;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Consultas {
 
@@ -26,7 +25,13 @@ public class Consultas {
    * conjunto associado a esta mesma chave.</p>
    */
   public Set<String> atoresQueInterpretaramSiProprios() {
-    return emptySet(); // TODO: Implementar.
+    Set<String> todosAtores = filmes.stream()
+        .flatMap(filme -> filme.getAtores().stream())
+        .collect(Collectors.toSet());
+
+    return todosAtores.stream()
+        .filter(ator -> filmes.stream().anyMatch(filme -> filme.getPersonagens().contains(ator)))
+        .collect(Collectors.toSet());
   }
 
   /**
