@@ -45,6 +45,10 @@ public class Filme {
         .collect(Collectors.toUnmodifiableSet());
   }
 
+  public int getAnoDeLancamento() {
+    return anoDeLancamento;
+  }
+
   @Override
   public String toString() {
     return String.format("%s (%d)", titulo, anoDeLancamento);

@@ -62,7 +62,22 @@ public class Consultas {
    * pelo menos um dos itens do campo `diretores` também é um item do campo `atores`.</p>
    */
   public List<Filme> filmesEmQuePeloMenosUmDiretorAtuouMaisRecentesPrimeiro() {
-    return emptyList(); // TODO: Implementar.
+    Set<String> todosOsDiretores = this.filmes.stream()
+        .flatMap(filme -> filme.diretores.stream())
+        .collect(Collectors.toSet());
+
+    return this.filmes.stream()
+        .filter(filme -> {
+          for (String diretor:todosOsDiretores) {
+            if (filme.atores.contains(diretor)) {
+              return true;
+            }
+          }
+          return false;
+        })
+        .distinct()
+        .sorted(Comparator.comparing(Filme::getAnoDeLancamento).reversed())
+        .collect(Collectors.toList());
   }
 
   /**
