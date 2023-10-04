@@ -1,11 +1,11 @@
 package com.trybe.consultafilmes;
 
-import static java.util.Collections.emptyList;
-import static java.util.Collections.emptyMap;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Classe responsavel por consultar filmes e fazer tratamentos dos dados.
+ */
 public class Consultas {
 
   private final Collection<Filme> filmes;
@@ -68,7 +68,7 @@ public class Consultas {
 
     return this.filmes.stream()
         .filter(filme -> {
-          for (String diretor:todosOsDiretores) {
+          for (String diretor : todosOsDiretores) {
             if (filme.atores.contains(diretor)) {
               return true;
             }
@@ -82,7 +82,7 @@ public class Consultas {
 
   /**
    * Consulta 4: a partir da coleção de filmes desta classe, este método retorna um Map contendo
-   * todos os filmes lançados em um determinado ano agrupados por categoria.
+   * todos os filmes lançados num determinado ano agrupados por categoria.
    *
    * <p>Cada chave do Map representa uma categoria, enquanto cada valor representa o
    * conjunto de filmes que se encaixam na categoria da chave correspondente.</p>
