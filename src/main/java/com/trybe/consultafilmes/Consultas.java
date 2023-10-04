@@ -88,6 +88,17 @@ public class Consultas {
    * conjunto de filmes que se encaixam na categoria da chave correspondente.</p>
    */
   public Map<String, Set<Filme>> filmesLancadosNoAnoAgrupadosPorCategoria(int ano) {
-    return emptyMap(); // TODO: Implementar (bônus).
+    Map<String, Set<Filme>> resultado = new HashMap<>();
+
+    this.filmes.stream()
+        .filter(filme -> filme.getAnoDeLancamento() == ano)
+        .forEach(filme -> {
+          Set<String> categorias = filme.getCategorias();
+          categorias.forEach(categoria -> {
+            resultado.computeIfAbsent(categoria, k -> new HashSet<>()).add(filme);
+          });
+        });
+
+    return resultado;
   }
 }

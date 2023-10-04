@@ -49,6 +49,10 @@ public class Filme {
     return anoDeLancamento;
   }
 
+  public Set<String> getCategorias() {
+    return categorias;
+  }
+
   @Override
   public String toString() {
     return String.format("%s (%d)", titulo, anoDeLancamento);
